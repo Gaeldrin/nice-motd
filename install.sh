@@ -21,7 +21,7 @@ fi
 
 echo
 echo "Making sure necessary packages are installed.."
-#apt-get -y install lsb-release
+apt-get -y install lsb-release
 echo "Done."
 
 echo
@@ -31,7 +31,7 @@ echo "Done."
 
 echo
 echo "Disabling original not useful message.."
-#mv /etc/motd /etc/motd.bak
+mv /etc/motd /etc/motd.bak
 echo "Done."
 
 echo
