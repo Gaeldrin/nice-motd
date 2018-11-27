@@ -1,0 +1,18 @@
+#!/bin/sh
+
+###############################################################
+#  Script     : 17-users
+#  Author     : Petr Všetečka
+#  Email      : vsetecka@cesnet.cz
+#  Date       : 27/11/2018
+#  Description: prints names of all users currently logged in
+#  Args       : none
+###############################################################
+
+
+printf "\n"
+w -h | awk 'BEGIN { printf "Users logged in:"; }
+                  { printf " %s", $1; }'
+top -bn1 | awk 'BEGIN { FS=",  "; }
+                $2~/user/ { print " (" $2 " total)"; }
+                $3~/user/ { print " (" $3 " total)"; }'

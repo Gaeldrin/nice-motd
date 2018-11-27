@@ -1,0 +1,31 @@
+#!/bin/sh
+
+###############################################################
+#  Script     : 15-hwstats
+#  Author     : Petr Všetečka
+#  Email      : vsetecka@cesnet.cz
+#  Date       : 27/11/2018
+#  Description: prints current time and usage of CPU, RAM & HDD
+#  Args       : none
+###############################################################
+
+
+printf "\nSystem information as of "; date
+printf "\n"
+
+# CPU
+printf "  CPU load: "; cat /proc/loadavg | awk '{ printf "%s %s %s", $1, $2, $3; }'
+printf " ("
+printf $(($(ps -e --no-headers | wc -l) - 1))
+printf " processes)\n"
+# RAM
+free -m | awk '/Mem/  { printf "  Memory:  %4sM  (%2d%%)  out of %2.1fG\n", $3, ($3/$2) * 100, $2/1000; }
+               /Swap/ { 
+                        if ( $3 == 0 )
+                            printf "  Swap:     not available\n";
+                        else
+                            printf "  Swap:    %4sM  (%2d%%)  out of %2.1fG\n", $3, ($3/$2) * 100, $2/1000;
+
+                      }'
+# Disk
+df -h   | awk '/^\//  { printf "  Disk:    %5s  (%3s)  out of %4s\n", $3, $5, $2; }'

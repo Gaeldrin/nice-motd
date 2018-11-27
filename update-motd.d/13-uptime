@@ -1,0 +1,13 @@
+#!/bin/sh
+
+###############################################################
+#  Script     : 13-uptime
+#  Author     : Petr Všetečka
+#  Email      : vsetecka@cesnet.cz
+#  Date       : 27/11/2018
+#  Description: prints total uptime in nice format
+#  Args       : none
+###############################################################
+
+
+printf "System is "; uptime -p

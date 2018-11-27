@@ -1,0 +1,14 @@
+#!/bin/sh
+
+###############################################################
+#  Script     : 11-welcome
+#  Author     : Petr Všetečka
+#  Email      : vsetecka@cesnet.cz
+#  Date       : 27/11/2018
+#  Description: prints distro name and kernel version
+#  Args       : none
+###############################################################
+
+
+printf "Welcome to "; lsb_release -ds
+printf "  Kernel: "; uname -v
