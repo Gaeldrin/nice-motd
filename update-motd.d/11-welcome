@@ -10,5 +10,5 @@
 ###############################################################
 
 
-printf "Welcome to "; lsb_release -ds
+printf "\nWelcome to "; lsb_release -ds
 printf "  Kernel: "; uname -v
