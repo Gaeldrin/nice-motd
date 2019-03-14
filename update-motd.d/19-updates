@@ -14,5 +14,5 @@
 
 printf "\n"
 apt-get -s upgrade | awk '/newly installed,/ { print $1 " packages can be updated."; }'
-printf $(($(apt-get -s upgrade | grep "security" | wc -l) / 2))
+printf $(($(apt-get -s upgrade | grep -i "security" | wc -l) / 2))
 printf " updates are security updates.\n\n"
